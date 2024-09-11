@@ -1,0 +1,18 @@
+/* Styles for Untitled-2 */
+html body {
+    height: 100%;
+}
+
+footer, header, section {
+    display: block;
+    float: none;
+    width: 100%;
+}
+img {
+    border-radius: 24%;
+    
+  }
+
+a:hover {
+    text-decoration: underline;
+}

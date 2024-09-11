@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <title>Totally Awesome Stuff</title>
-    <link rel="stylesheet" type="text/css" href="myStyles.css">
-    <script src="https://apis.google.com/js/platform.js" async defer></script> <!-- Google API script -->
+    <link rel="stylesheet" type="text/css" href="Untitled-2.css">
+
 </head>
 <body>
     <header>
         <h1>Welcome to Totally Awesome Stuff</h1>
     </header>
     
-    <!-- Sign-out button (You can place this where it fits in your layout) -->
-    <a href="#" onclick="signOut();">Sign out</a>
+  
     
     <nav>
         <ul>
@@ -25,15 +25,7 @@
         Copyright &copy; 2024
     </footer>
 
-    <!-- Place the signOut function script here -->
-    <script>
-      function signOut() {
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-          console.log('User signed out.');
-        });
-      }
-    </script>
+  
 </body>
 </html>
 
