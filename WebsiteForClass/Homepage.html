@@ -9,56 +9,33 @@
 </head>
 <body>
     <header>
-        <h1>WelcOme to Computer Waste </h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#login">Login</a></li>
-            </ul>
-        </nav>
+        <h1>Welcome to Computer Waste </h1>
+        
     </header>
+    <aside>
+                <ul style="display: flex; justify-content: space-around; list-style-type: none; padding: 0;">
+            <li style="border: 1px solid black; padding: 10px;"><a href="Homepage.html">Home</a></li>
+            <li style="border: 1px solid black; padding: 10px;"><a href="aboutus.html">About Us</a></li>
+            <li style="border: 1px solid black; padding: 10px;"><a href="Sell.html">Sell</a></li>
+            <li style="border: 1px solid black; padding: 10px;"><a href="login.html">Login</a></li>
+        </ul>
+    </aside>
+    <main>
+        <img src="HomepicMother.jpg" alt="Home Picture Motherboard">
+    </main>
+    
+    <section>
+        <h2>Easy Process</h2>
+        <ul>
+            <li>We offer a simple, hassle-free process to recycle your e-waste. Simply drop off your items, or schedule a pick-up, and we'll handle the rest.</li>
+            <li>We buy your old electronics for cash! Get paid for your e-waste, whether it's a single device or large quantities of scrap electronics.</li>
+            <li>We ensure that all e-waste is responsibly recycled, reducing landfill waste and conserving valuable resources.</li>
+            <li>We prioritize your privacy. All data is securely wiped from devices before recycling to ensure your personal information is safe.</li>
+        </ul>
+        </section>
 
-    <section id="home">
-        <h2>Our Services</h2>
-        <p>We specialize in the purchasing and selling of computer waste.</p>
-    </section>
-
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <form action="/submit_contact_form" method="post">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            <br>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <br>
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-            <br>
-            <input type="checkbox" id="subscribe" name="subscribe">
-            <label for="subscribe">Subscribe to our newsletter</label>
-            <br>
-            <button type="submit">Submit</button>
-        </form>
-    </section>
-
-    <section id="login">
-        <h2>Customer Login</h2>
-        <form action="/login" method="post">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <br>
-            <button type="submit">Login</button>
-        </form>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 Computer Waste .</p>
+        <footer>
+            <p>&copy; 2024 Computer Waste .</p>
     </footer>
 </body>
 </html>
