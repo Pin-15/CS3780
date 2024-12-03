@@ -3,67 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sell Items</title>
+    <title>Sell Items - Lucky Circuit Salvage</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="Homepage.css">
 </head>
 <body>
-    <header>
+    <header class="bg-dark text-white text-center py-3">
         <h1>Sell Your Items</h1>
     </header>
-    <main>
-    <aside>
-        <ul style="display: flex; justify-content: space-around; list-style-type: none; padding: 0;">
-            <li style="border: 1px solid black; padding: 10px;"><a href="Homepage.html">Home</a></li>
-            <li style="border: 1px solid black; padding: 10px;"><a href="AboutUs.html">About Us</a></li>
-            <li style="border: 1px solid black; padding: 10px;"><a href="Sell.html">Sell</a></li>
-            <li style="border: 1px solid black; padding: 10px;"><a href="Login.html">Login</a></li>
+    <nav>
+        <ul class="horizontal-menu">
+            <li><a href="Homepage.html">Home</a></li>
+            <li><a href="AboutUs.html">About Us</a></li>
+            <li><a href="Sell.html">Sell Your Electronics</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
         </ul>
-        </aside>
-        </main>
-
-
-
-        <main>
-            <section>
-                <img src="Sell_Morther_bord.jpg" alt="Sell Motherboard" style="width: 300px; height: auto;">
-                <div>
-                    <label for="pounds_motherboard">Enter pounds:</label>
-                    <input type="number" id="pounds_motherboard" name="pounds_motherboard">
-                    <button onclick="calculatePriceMorther_bord()">Calculate Price</button>
-                </div>
-                <div id="result_motherboard"></div>
-            </section>
+    </nav>
+    <main>
+        <section>
+            <img src="Sell_Morther_bord.jpg" alt="Sell Motherboard" style="width: 300px; height: auto;">
+            <div class="my-3">
+                <label for="pounds_motherboard">Enter pounds:</label>
+                <input type="number" id="pounds_motherboard" name="pounds_motherboard" class="form-control w-50 d-inline-block">
+                <button onclick="calculatePriceMorther_bord()" class="btn btn-primary">Calculate Price</button>
+            </div>
+            <div id="result_motherboard"></div>
+        </section>
 
         <section>
-                <img src="Sell_ram.jpg" alt="Sell Ram" style="width: 300px; height: auto;">
-                <div>
-                    <label for="pounds_ram">Enter pounds:</label>
-                    <input type="number" id="pounds_ram" name="pounds_ram">
-                    <button onclick="calculatePriceRam()">Calculate Price</button>
-                </div>
-                <div id="result_ram"></div>
-            </section>
+            <img src="Sell_ram.jpg" alt="Sell Ram" style="width: 300px; height: auto;">
+            <div class="my-3">
+                <label for="pounds_ram">Enter pounds:</label>
+                <input type="number" id="pounds_ram" name="pounds_ram" class="form-control w-50 d-inline-block">
+                <button onclick="calculatePriceRam()" class="btn btn-primary">Calculate Price</button>
+            </div>
+            <div id="result_ram"></div>
+        </section>
 
+        <section>
+            <img src="Sell_cpu.jpg" alt="Sell CPU" style="width: 300px; height: auto;">
+            <div class="my-3">
+                <label for="pounds_cpu">Enter pounds:</label>
+                <input type="number" id="pounds_cpu" name="pounds_cpu" class="form-control w-50 d-inline-block">
+                <button id="calculate_cpu" class="btn btn-primary">Calculate Price</button>
+            </div>
+            <div id="result_cpu"></div>
+        </section>
+    </main>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#calculate_cpu').click(function() {
+                var pounds = $('#pounds_cpu').val();
+                var price = pounds * 15;
+                $('#result_cpu').text('Total Price: $' + price.toFixed(2));
+            });
+        });
 
+        function calculatePriceMorther_bord() {
+            var pounds = document.getElementById('pounds_motherboard').value;
+            var price = pounds * 4.25;
+            document.getElementById('result_motherboard').innerText = 'Total Price: $' + price.toFixed(2);
+        }
 
+        function calculatePriceRam() {
+            var pounds = document.getElementById('pounds_ram').value;
+            var price = pounds * 9;
+            document.getElementById('result_ram').innerText = 'Total Price: $' + price.toFixed(2);
+        }
+    </script>
 
-
-        </main>
-
-        <script>
-            function calculatePriceMorther_bord() {
-                var pounds = document.getElementById('pounds_motherboard').value;
-                var price = pounds * 4.25;
-                document.getElementById('result_motherboard').innerText = 'Total Price: $' + price.toFixed(2);
-            }
-
-            function calculatePriceRam() {
-                var pounds = document.getElementById('pounds_ram').value;
-                var price = pounds * 9;
-                document.getElementById('result_ram').innerText = 'Total Price: $' + price.toFixed(2);
-            }
-  
-        </script>
-    </body>
-    </html>
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 Lucky Circuit Salvage.</p>
+        <p><a href="privacy.html" class="text-white">Privacy Policy</a> | <a href="terms.html" class="text-white">Terms of Service</a></p>
+    </footer>
+</body>
+</html>

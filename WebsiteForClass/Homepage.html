@@ -1,41 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Computer Waste Management</title>
-    <link rel="stylesheet" href= "Homepage.css">
+    <title>Lucky Circuit Salvage</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="Homepage.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Computer Waste </h1>
-        
+    <header class="bg-dark text-white text-center py-3">
+        <h1>Welcome to Lucky Circuit Salvage</h1>
     </header>
-    <aside>
-                <ul style="display: flex; justify-content: space-around; list-style-type: none; padding: 0;">
-            <li style="border: 1px solid black; padding: 10px;"><a href="Homepage.html">Home</a></li>
-            <li style="border: 1px solid black; padding: 10px;"><a href="aboutus.html">About Us</a></li>
-            <li style="border: 1px solid black; padding: 10px;"><a href="Sell.html">Sell</a></li>
-            <li style="border: 1px solid black; padding: 10px;"><a href="login.html">Login</a></li>
-        </ul>
-    </aside>
-    <main>
-        <img src="HomepicMother.jpg" alt="Home Picture Motherboard">
-    </main>
-    
-    <section>
-        <h2>Easy Process</h2>
-        <ul>
-            <li>We offer a simple, hassle-free process to recycle your e-waste. Simply drop off your items, or schedule a pick-up, and we'll handle the rest.</li>
-            <li>We buy your old electronics for cash! Get paid for your e-waste, whether it's a single device or large quantities of scrap electronics.</li>
-            <li>We ensure that all e-waste is responsibly recycled, reducing landfill waste and conserving valuable resources.</li>
-            <li>We prioritize your privacy. All data is securely wiped from devices before recycling to ensure your personal information is safe.</li>
-        </ul>
-        </section>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a href="Homepage.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="aboutus.html" class="nav-link">About Us</a></li>
+                <li class="nav-item"><a href="Sell.html" class="nav-link">Sell Your Electronics</a></li>
+                <li class="nav-item">
+                    <div id="g_id_onload" data-client_id="YOUR_CLIENT_ID" data-callback="onSignIn"></div>
+                    <div class="g_id_signin" data-type="standard"></div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main class="homepage-main container mt-4">
+        <img src="HomepicMother.jpg" alt="Home Picture Motherboard" class="skinny-image">
+        <section>
+            <h2 class="my-4">Easy Process</h2>
+            <ul class="list-unstyled">
+<li>We offer a simple, hassle-free process to recycle your e-waste. Just like hitting the jackpot, you can simply drop off your items or schedule a pick-up, and we'll handle the rest.</li>
+<li>We buy your old electronics for cash! Cash in your chips and get paid for your e-waste, whether it's a single device or a full house of scrap electronics.</li>
+<li>We ensure that all e-waste is responsibly recycled, reducing landfill waste and conserving valuable resources. It's a safe bet for both you and the environment.</li>
+<li>We prioritize your privacy. Just as secure as a casino vault, all data is securely wiped from devices before recycling to ensure your personal information is safe.</li>
 
-        <footer>
-            <p>&copy; 2024 Computer Waste .</p>
+            </ul>
+        </section>
+    </main>
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 Lucky Circuit Salvage.</p>
+        <p><a href="privacy.html" class="text-white">Privacy Policy</a> | <a href="terms.html" class="text-white">Terms of Service</a></p>
     </footer>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Google Sign-In -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!-- React (Optional) -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <!-- Custom Script -->
+    <script type="text/babel">
+        function App() {
+            return (
+                <div className="App">
+                    <h1>Welcome to Lucky Circuit Salvage</h1>
+                    <p>Your trusted solution for e-waste recycling</p>
+                </div>
+            );
+        }
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+    <script>
+        function onSignIn(googleUser) {
+            var profile = googleUser.getBasicProfile();
+            console.log('ID: ' + profile.getId());
+            console.log('Name: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail());
+        }
+    </script>
 </body>
 </html>
