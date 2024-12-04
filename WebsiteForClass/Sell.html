@@ -14,7 +14,7 @@
 <body>
     <header class="bg-dark text-white text-center py-3">
         <h1>Sell Your Items</h1>
-   </header>
+    </header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <ul class="navbar-nav mx-auto">
@@ -30,17 +30,19 @@
     </nav>
     <main>
         <section>
-            <img src="Sell_Morther_bord.jpg" alt="Sell Motherboard" style="width: 300px; height: auto;">
+            <h2>Metal Socket  Motherboard</h2>
+            <img src="Sell_Morther_bord.jpg" alt="Metal Socket  Motherboard" style="width: 300px; height: auto;">
             <div class="my-3">
                 <label for="pounds_motherboard">Enter pounds:</label>
                 <input type="number" id="pounds_motherboard" name="pounds_motherboard" class="form-control w-50 d-inline-block">
-                <button onclick="calculatePriceMorther_bord()" class="btn btn-primary">Calculate Price</button>
+                <button onclick="calculatePriceMotherboard()" class="btn btn-primary">Calculate Price</button>
             </div>
             <div id="result_motherboard"></div>
         </section>
 
         <section>
-            <img src="Sell_ram.jpg" alt="Sell Ram" style="width: 300px; height: auto;">
+            <h2>Gold Fingered RAM</h2>
+            <img src="Sell_ram.jpg" alt="Gold Fingered RAM" style="width: 300px; height: auto;">
             <div class="my-3">
                 <label for="pounds_ram">Enter pounds:</label>
                 <input type="number" id="pounds_ram" name="pounds_ram" class="form-control w-50 d-inline-block">
@@ -50,7 +52,8 @@
         </section>
 
         <section>
-            <img src="Sell_cpu.jpg" alt="Sell CPU" style="width: 300px; height: auto;">
+            <h2>No Pin CPU</h2>
+            <img src="Sell_cpu.jpg" alt="CPU" style="width: 300px; height: auto;">
             <div class="my-3">
                 <label for="pounds_cpu">Enter pounds:</label>
                 <input type="number" id="pounds_cpu" name="pounds_cpu" class="form-control w-50 d-inline-block">
@@ -70,7 +73,7 @@
             });
         });
 
-        function calculatePriceMorther_bord() {
+        function calculatePriceMotherboard() {
             var pounds = document.getElementById('pounds_motherboard').value;
             var price = pounds * 4.25;
             document.getElementById('result_motherboard').innerText = 'Total Price: $' + price.toFixed(2);

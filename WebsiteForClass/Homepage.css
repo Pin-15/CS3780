@@ -245,3 +245,10 @@ main {
     max-height: 200px; /* Adjust this value to make the image skinny */
     object-fit: cover; /* Ensures the image covers the given space while maintaining aspect ratio */
 }
+    .btn-yellow {
+        background-color: yellow;
+        color: black;
+        border: 2px solid black;
+        display: block;
+        margin: 20px auto;
+    }
