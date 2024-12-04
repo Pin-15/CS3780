@@ -37,7 +37,7 @@
         .ball {
             width: 20px;
             height: 20px;
-            border-radius: 50%;
+            border-radius: 50;
             position: absolute;
         }
         .btn-shoot {
@@ -78,16 +78,22 @@
         </div>
     </div>
 
-    <!-- jQuery -->
+
+
+  
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-    <!-- p5.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
+
+
+
+
+
     <script>
         let shotsRemaining = 5;
         let totalScore = 0;
-        let values = [500, 550, 600, 650, 700, 750, 800, 850, 870];
+        let values = [50, 55, 6, 70, 80, 750, 800, 850, 870];
         let balls = [];
         let pinballBox;
         let scoreElem;
@@ -98,13 +104,16 @@
             scoreElem = select('#score');
             noLoop();
         }
-
         function draw() {
-            background(220);
-            for (let i = 0; i < balls.length; i++) {
-                balls[i].display();
+              for (let n = 0; n < balls.length; n++) {
+
+            balls[n].display();
+
+             }
+
+                  balls[i].display();
             }
-        }
+        
 
         function Ball(x, y, value) {
             this.x = x;
@@ -139,13 +148,13 @@
                 if (shotsRemaining === 0) {
                     setTimeout(() => {
                         if (totalScore > 1250) {
-                            alert('Hand pay');
+                            alert('Hand pay!');
                         } else {
                             alert(`Game over! Total winnings: $${totalScore}`);
                         }
-                        $('#bisonGameModal').modal('hide');  // Close the modal and reset game
+                        $('#bisonGameModal').modal('hide');  
                         resetGame();
-                    }, 100);  // small delay to allow the last shot to render before the alert
+                    }, 100);  
                 }
             }
         }
@@ -156,16 +165,16 @@
             const box2 = document.getElementById('box2');
             const box3 = document.getElementById('box3');
 
-            // Randomly assign a color to each box
+            
             box1.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
             box2.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
             box3.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
 
-            // Check if all boxes have the same color
+            
             if (box1.style.backgroundColor === box2.style.backgroundColor && box2.style.backgroundColor === box3.style.backgroundColor) {
                 setTimeout(() => {
                     $('#bisonGameModal').modal('show');
-                }, 100);  // small delay to allow the color change to render before the modal
+                }, 100);  
             }
         }
 
