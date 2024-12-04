@@ -4,13 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lucky Circuit Salvage</title>
-    <!-- Bootstrap CSS -->
+
+
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Font Awesome -->
+ 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <!-- Custom CSS -->
+    
     <link rel="stylesheet" href="Homepage.css">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <style>
+        .btn-custom {
+            border: 2px solid pink;
+            color: pink;
+            background-color: transparent;
+            display: block;
+            margin: 0 auto;
+        }
+        .skinny-image {
+            display: block;
+            margin: 0 auto;
+        }
+        .btn-small {
+            border: 2px solid pink;
+            color: pink;
+            background-color: transparent;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+    </style>
 </head>
 <body>
     <header class="bg-dark text-white text-center py-3">
@@ -31,32 +54,71 @@
     </nav>
     <main class="homepage-main container mt-4">
         <img src="HomepicMother.jpg" alt="Home Picture Motherboard" class="skinny-image">
+        
         <section>
+            <button type="button" class="btn btn-custom mt-3" data-toggle="modal" data-target="#newCustomerModal">New Customer</button>
+
             <h2 class="my-4">Easy Process</h2>
             <ul class="list-unstyled">
-<li>We offer a simple, hassle-free process to recycle your e-waste. Just like hitting the jackpot, you can simply drop off your items or schedule a pick-up, and we'll handle the rest.</li>
-<li>We buy your old electronics for cash! Cash in your chips and get paid for your e-waste, whether it's a single device or a full house of scrap electronics.</li>
-<li>We ensure that all e-waste is responsibly recycled, reducing landfill waste and conserving valuable resources. It's a safe bet for both you and the environment.</li>
-<li>We prioritize your privacy. Just as secure as a casino vault, all data is securely wiped from devices before recycling to ensure your personal information is safe.</li>
-
+                <li>We offer a simple, hassle-free process to recycle your e-waste. Just like hitting the jackpot, you can simply drop off your items or schedule a pick-up, and we'll handle the rest.</li>
+                <li>We buy your old electronics for cash! Cash in your chips and get paid for your e-waste, whether it's a single device or a full house of scrap electronics.</li>
+                <li>We ensure that all e-waste is responsibly recycled, reducing landfill waste and conserving valuable resources. It's a safe bet for both you and the environment.</li>
+                <li>We prioritize your privacy. Just as secure as a casino vault, all data is securely wiped from devices before recycling to ensure your personal information is safe.</li>
             </ul>
         </section>
+
+       
+        <div class="modal fade" id="newCustomerModal" tabindex="-1" role="dialog" aria-labelledby="newCustomerModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="newCustomerModalLabel">New Customer</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="newCustomerForm">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" class="form-control" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" name="lastName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phoneNumber">Phone Number</label>
+                                <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-small" onclick="openCasinoPage()">Casino Access</button>
     </main>
     <footer class="bg-dark text-white text-center py-3">
         <p>&copy; 2024 Lucky Circuit Salvage.</p>
         <p><a href="privacy.html" class="text-white">Privacy Policy</a> | <a href="terms.html" class="text-white">Terms of Service</a></p>
     </footer>
-    <!-- jQuery -->
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Bootstrap JS -->
+   
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- Google Sign-In -->
+   
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <!-- React (Optional) -->
+  
     <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-    <!-- Custom Script -->
+  
     <script type="text/babel">
         function App() {
             return (
@@ -76,6 +138,50 @@
             console.log('Image URL: ' + profile.getImageUrl());
             console.log('Email: ' + profile.getEmail());
         }
+
+        $('#newCustomerForm').on('submit', function(event) {
+            event.preventDefault();
+
+            var formData = {
+                firstName: $('#firstName').val(),
+                lastName: $('#lastName').val(),
+                email: $('#email').val(),
+                phoneNumber: $('#phoneNumber').val()
+            };
+
+            // SQL injection protection:  Got from web 
+            function sanitize(input) {
+                return input.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            }
+
+            formData.firstName = sanitize(formData.firstName);
+            formData.lastName = sanitize(formData.lastName);
+            formData.email = sanitize(formData.email);
+            formData.phoneNumber = sanitize(formData.phoneNumber);
+
+            $.ajax({
+                type: 'POST',
+                url: 'process_new_customer.php',
+                data: formData,
+                success: function(response) {
+                    alert('Customer added successfully!');
+                    $('#newCustomerModal').modal('hide');
+                },
+                error: function() {
+                    alert('There was an error adding the customer. Please try again.');
+                }
+            });
+        });
+
+        function openCasinoPage() {
+            var password = prompt("Enter the password to access the casino:");
+            if (password === "Boom") {
+                window.location.href = "casino.html";
+            } else {
+                alert("Incorrect password. Access denied.");
+            }
+        }
     </script>
 </body>
 </html>
+

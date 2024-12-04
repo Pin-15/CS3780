@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucky Circuit Salvage Casino</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="Homepage.css">
+    <style>
+        .game-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+            border: 2px solid black;
+            margin: 10px;
+        }
+        .btn-play {
+            margin-top: 20px;
+        }
+        .pinball-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .pinball-box {
+            width: 300px;
+            height: 500px;
+            border: 2px solid black;
+            margin: 0 auto;
+            position: relative;
+        }
+        .ball {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .btn-shoot {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-dark text-white text-center py-3">
+        <h1>Welcome to the FUN!!!!</h1>
+    </header>
+    <main class="game-container">
+        <div id="box1" class="box"></div>
+        <div id="box2" class="box"></div>
+        <div id="box3" class="box"></div>
+        <button class="btn btn-primary btn-play" onclick="playGame()">Play</button>
+    </main>
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 Lucky Circuit Salvage Casino.</p>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal fade" id="bisonGameModal" tabindex="-1" role="dialog" aria-labelledby="bisonGameModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="bisonGameModalLabel">Bonus</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="pinballContainer" class="pinball-container"></div>
+                    <button class="btn btn-primary btn-shoot" onclick="shootBall()">Shoot</button>
+                    <p id="score">Score: $0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <!-- p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script>
+        let shotsRemaining = 5;
+        let totalScore = 0;
+        let values = [500, 550, 600, 650, 700, 750, 800, 850, 870];
+        let balls = [];
+        let pinballBox;
+        let scoreElem;
+
+        function setup() {
+            pinballBox = createCanvas(300, 500);
+            pinballBox.parent('pinballContainer');
+            scoreElem = select('#score');
+            noLoop();
+        }
+
+        function draw() {
+            background(220);
+            for (let i = 0; i < balls.length; i++) {
+                balls[i].display();
+            }
+        }
+
+        function Ball(x, y, value) {
+            this.x = x;
+            this.y = y;
+            this.value = value;
+            this.display = function() {
+                fill(255);
+                stroke(0);
+                ellipse(this.x, this.y, 20, 20);
+                fill(0);
+                noStroke();
+                textAlign(CENTER, CENTER);
+                text('$' + this.value, this.x, this.y);
+            }
+        }
+
+        function shootBall() {
+            if (shotsRemaining > 0) {
+                let x = random(20, width - 20);
+                let y = random(20, height - 20);
+                let value = random(values);
+                let newBall = new Ball(x, y, value);
+                balls.push(newBall);
+
+                totalScore += value;
+                scoreElem.html(`Score: $${totalScore}`);
+
+                shotsRemaining--;
+
+                redraw();
+
+                if (shotsRemaining === 0) {
+                    setTimeout(() => {
+                        if (totalScore > 1250) {
+                            alert('Hand pay');
+                        } else {
+                            alert(`Game over! Total winnings: $${totalScore}`);
+                        }
+                        $('#bisonGameModal').modal('hide');  // Close the modal and reset game
+                        resetGame();
+                    }, 100);  // small delay to allow the last shot to render before the alert
+                }
+            }
+        }
+
+        function playGame() {
+            const colors = ['red', 'blue'];
+            const box1 = document.getElementById('box1');
+            const box2 = document.getElementById('box2');
+            const box3 = document.getElementById('box3');
+
+            // Randomly assign a color to each box
+            box1.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            box2.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            box3.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+            // Check if all boxes have the same color
+            if (box1.style.backgroundColor === box2.style.backgroundColor && box2.style.backgroundColor === box3.style.backgroundColor) {
+                setTimeout(() => {
+                    $('#bisonGameModal').modal('show');
+                }, 100);  // small delay to allow the color change to render before the modal
+            }
+        }
+
+        function resetGame() {
+            shotsRemaining = 5;
+            totalScore = 0;
+            balls = [];
+            document.getElementById('score').textContent = 'Score: $0';
+            redraw();
+        }
+    </script>
+</body>
+</html>
